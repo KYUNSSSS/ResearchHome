@@ -4,7 +4,7 @@ A simple web application for displaying academic research papers and their detai
 
 ## Setup Instructions
 
-1. Create a MySQL database named `research_db`
+1. Create a MySQL database named `research_db` (Run XAMPP MySQL)
 2. Install the required dependencies:
    ```bash
    pip install -r requirements.txt
@@ -12,7 +12,7 @@ A simple web application for displaying academic research papers and their detai
 
 3. Update the database connection string in `app.py` with your MySQL credentials:
    ```python
-   app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://username:password@localhost/research_db'
+   app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://username:password@localhost/research_db'
    ```
 
 4. Run the application:
