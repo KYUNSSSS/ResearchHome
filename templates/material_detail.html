@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        {% if error %}
+            <div class="alert alert-danger">{{ error }}</div>
+            <a href="{{ url_for('index') }}" class="btn btn-secondary">Back to List</a>
+        {% else %}
+            <h1 class="card-title">{{ material.title }}</h1>
+            <h6 class="card-subtitle mb-3 text-muted">By {{ material.author }}</h6>
+            
+            <div class="mb-4">
+                <h5>Description</h5>
+                <p>{{ material.description }}</p>
+            </div>
+
+            <div class="mb-4">
+                <h5>Category</h5>
+                <p>{{ material.category }}</p>
+            </div>
+
+            <div class="mb-4">
+                <h5>Year Published</h5>
+                <p>{{ material.year_published }}</p>
+            </div>
+
+            {% if material.isbn %}
+            <div class="mb-4">
+                <h5>ISBN</h5>
+                <p>{{ material.isbn }}</p>
+            </div>
+            {% endif %}
+
+            <a href="{{ url_for('index') }}" class="btn btn-secondary">Back to List</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %} 
