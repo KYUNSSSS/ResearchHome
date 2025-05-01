@@ -1,21 +1,41 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="mb-4">Research Papers</h1>
-
-<div class="row">
-    {% for paper in research_papers %}
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">{{ paper.title }}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">By {{ paper.authors }}</h6>
-                <p class="card-text">{{ paper.abstract[:200] }}...</p>
-                <p class="card-text"><small class="text-muted">Published: {{ paper.publication_date.strftime('%Y-%m-%d') }}</small></p>
-                <a href="{{ url_for('research_detail', id=paper.id) }}" class="btn btn-primary">Read More</a>
+<div class="row mb-4">
+    <div class="col">
+        <h1>Research Papers</h1>
+        <div class="row">
+            {% for paper in research_papers %}
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ paper.title }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">By {{ paper.authors }}</h6>
+                        <p class="card-text">{{ paper.abstract[:200] }}...</p>
+                        <p class="card-text"><small class="text-muted">Published: {{ paper.publication_date.strftime('%Y-%m-%d') }}</small></p>
+                        <a href="{{ url_for('research_detail', id=paper.id) }}" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
             </div>
+            {% endfor %}
+
+            {% for material in materials %}
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ material.title }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">By {{ material.author }}</h6>
+                        <!-- <p class="card-text">{{ material.description }}</p>
+                        <p class="card-text"><small class="text-muted">Category: {{ material.category }}</small></p> -->
+                        <p class="card-text"><small class="text-muted">Published: {{ material.year_published }}</small></p>
+                        <p class="card-text"><small class="text-muted">Source : Reading Material Management System</small></p>
+                        <a href="{{ url_for('material_detail', id=material.id) }}" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
         </div>
+
     </div>
-    {% endfor %}
 </div>
 {% endblock %} 
