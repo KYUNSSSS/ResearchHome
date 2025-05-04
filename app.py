@@ -25,6 +25,7 @@ class Research(db.Model):
     publication_date = db.Column(db.DateTime, nullable=False)
     keywords = db.Column(db.String(200))
     review = db.Column(db.Text)
+    doi = db.Column(db.String(100), unique=True)  # Adding DOI field with unique constraint
 
 def fetch_laravel_materials():
     try:
@@ -83,7 +84,8 @@ def api_search_research():
             'authors': paper.authors,
             'abstract': paper.abstract,
             'publication_date': paper.publication_date.isoformat() if paper.publication_date else None,
-            'keywords': paper.keywords
+            'keywords': paper.keywords,
+            'doi': paper.doi
         })
         
     return jsonify({'data': results})
@@ -99,7 +101,8 @@ def api_get_research(id):
         'abstract': research.abstract,
         'publication_date': research.publication_date.isoformat() if research.publication_date else None,
         'keywords': research.keywords,
-        'review': research.review
+        'review': research.review,
+        'doi': research.doi
     }
     
     return jsonify({'data': result})

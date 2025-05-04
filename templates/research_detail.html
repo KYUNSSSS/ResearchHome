@@ -21,6 +21,13 @@
             <p>{{ research.publication_date.strftime('%Y-%m-%d') }}</p>
         </div>
 
+        {% if research.doi %}
+        <div class="mb-4">
+            <h5>DOI</h5>
+            <p><a href="https://doi.org/{{ research.doi }}" target="_blank">{{ research.doi }}</a></p>
+        </div>
+        {% endif %}
+
         {% if research.review %}
         <div class="mb-4">
             <h5>Review</h5>
