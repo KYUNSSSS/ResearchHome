@@ -28,9 +28,10 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ material.title }}</h5>
                         <h6 class="card-subtitle mb-2 text-muted">By {{ material.author }}</h6>
-                        <!-- <p class="card-text">{{ material.description }}</p>
-                        <p class="card-text"><small class="text-muted">Category: {{ material.category }}</small></p> -->
+                        <p class="card-text">{{ material.description[:200] }}...</p>
+                        <!-- <p class="card-text"><small class="text-muted">Category: {{ material.category }}</small></p> -->
                         <p class="card-text"><small class="text-muted">Published: {{ material.year_published }}</small></p>
+                        <p class="card-text"><small class="text-muted">DOI: <a href="https://doi.org/{{ material.isbn }}" target="_blank">{{ material.isbn }}</a></small></p>
                         <p class="card-text"><small class="text-muted">Source : Reading Material Management System</small></p>
                         <a href="{{ url_for('material_detail', id=material.id) }}" class="btn btn-primary">Read More</a>
                     </div>

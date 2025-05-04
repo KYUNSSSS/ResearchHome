@@ -11,13 +11,8 @@
             <h6 class="card-subtitle mb-3 text-muted">By {{ material.author }}</h6>
             
             <div class="mb-4">
-                <h5>Description</h5>
+                <h5>Abstract</h5>
                 <p>{{ material.description }}</p>
-            </div>
-
-            <div class="mb-4">
-                <h5>Category</h5>
-                <p>{{ material.category }}</p>
             </div>
 
             <div class="mb-4">
@@ -27,10 +22,12 @@
 
             {% if material.isbn %}
             <div class="mb-4">
-                <h5>ISBN</h5>
+                <h5>DOI</h5>
                 <p>{{ material.isbn }}</p>
             </div>
             {% endif %}
+
+            <p class="card-text"><small class="text-muted">Source : Reading Material Management System</small></p>
 
             <a href="{{ url_for('index') }}" class="btn btn-secondary">Back to List</a>
         {% endif %}
