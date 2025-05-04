@@ -1,4 +1,4 @@
-# Research Portal
+# ResearchHome
 
 A simple web application for displaying academic research papers and their details.
 
