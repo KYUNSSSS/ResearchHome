@@ -29,9 +29,26 @@ class Research(db.Model):
 
 def fetch_laravel_materials():
     try:
+        # Get all materials from Laravel API
         response = requests.get(f'{API_BASE_URL}/materials')
         if response.status_code == 200:
-            return response.json()['data']
+            materials = response.json()['data']
+            
+            # Filter materials to only include Research Papers with DOI
+            research_papers = [
+                m for m in materials 
+                if m.get('category') == 'Research Paper' 
+                and m.get('isbnOrDoi') is not None 
+                and m.get('isbnOrDoi').strip() != ''
+            ]
+            
+            # Get all existing DOIs from our database
+            existing_dois = {paper.doi for paper in Research.query.with_entities(Research.doi).all()}
+            
+            # Filter out materials that already exist in our database
+            new_materials = [m for m in research_papers if m.get('isbnOrDoi') not in existing_dois]
+            
+            return new_materials
         return []
     except requests.exceptions.RequestException:
         return []
