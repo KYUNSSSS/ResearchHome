@@ -20,10 +20,10 @@
                 <p>{{ material.year_published }}</p>
             </div>
 
-            {% if material.isbn %}
+            {% if material.isbnOrDoi %}
             <div class="mb-4">
                 <h5>DOI</h5>
-                <p>{{ material.isbn }}</p>
+                <p>{{ material.isbnOrDoi }}</p>
             </div>
             {% endif %}
 

@@ -38,15 +38,15 @@ def fetch_laravel_materials():
             research_papers = [
                 m for m in materials 
                 if m.get('category') == 'Research Paper' 
-                and m.get('isbn') is not None 
-                and m.get('isbn').strip() != ''
+                and m.get('isbnOrDoi') is not None 
+                and m.get('isbnOrDoi').strip() != ''
             ]
             
             # Get all existing DOIs from our database
             existing_dois = {paper.doi for paper in Research.query.with_entities(Research.doi).all()}
             
             # Filter out materials that already exist in our database
-            new_materials = [m for m in research_papers if m.get('isbn') not in existing_dois]
+            new_materials = [m for m in research_papers if m.get('isbnOrDoi') not in existing_dois]
             
             return new_materials
         return []
